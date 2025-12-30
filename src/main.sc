@@ -15,7 +15,7 @@ theme: /
             // 4. Tugmani chiqarish
             $reactions.inlineButtons({
                 "text": "🚀 Kabinetga kirish",
-                "url": myUrl
+                "web_app": myUrl
             });
 
     state: CatchAll
