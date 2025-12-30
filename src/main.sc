@@ -1,23 +1,23 @@
-require: slotfilling/slotFilling.sc
-  module = sys.zb-common
 theme: /
 
     state: Start
         q!: $regex</start>
-        a: Начнём.
+        script:
+            // 1. User ID ni olish
+            var userId = $request.channelUserId || $request.data.user.id;
+            
+            // 2. Ssilkani yasash
+            var myUrl = "https://cabinet.kuber-stage.moydomonline.ru/?user_id=" + userId;
+            
+            // 3. Javob matni
+            $reactions.answer("Assalomu alaykum! Kabinetga kirish uchun tugmani bosing:");
+            
+            // 4. Tugmani chiqarish
+            $reactions.inlineButtons({
+                "text": "🚀 Kabinetga kirish",
+                "url": myUrl
+            });
 
-    state: Hello
-        intent!: /привет
-        a: Привет привет
-
-    state: Bye
-        intent!: /пока
-        a: Пока пока
-
-    state: NoMatch
-        event!: noMatch
-        a: Я не понял. Вы сказали: {{$request.query}}
-
-    state: Match
-        event!: match
-        a: {{$context.intent.answer}}
+    state: CatchAll
+        q!: *
+        a: Iltimos, boshlash uchun /start buyrug'ini bosing.
