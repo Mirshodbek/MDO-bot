@@ -15,6 +15,7 @@ theme: /
             // 4. Tugmani chiqarish
             $reactions.inlineButtons({
                 "text": "🚀 Kabinetga kirish",
+                "type": "open_app", 
                 "web_app": myUrl
             });
 
